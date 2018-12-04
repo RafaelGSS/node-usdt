@@ -66,7 +66,7 @@ namespace node {
     // create a USDTProbe object
     v8::Local<Function> klass =
         Nan::New<FunctionTemplate>(USDTProbe::constructor_template)->GetFunction();
-    v8::Local<Object> pd = klass->NewInstance();
+    v8::Local<Object> pd = Nan::NewInstance(klass).ToLocalChecked();
 
     // store in provider object
     USDTProbe *probe = Nan::ObjectWrap::Unwrap<USDTProbe>(pd->ToObject());
